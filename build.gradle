@@ -4,7 +4,7 @@ plugins { // (1)
     id 'java'
 }
 
-group 'com.jojoldu.book'
+group 'com.terry.blog'
 version '1.0.4-SNAPSHOT-'+new Date().format("yyyyMMddHHmmss")
 sourceCompatibility = 1.8
 
@@ -32,6 +32,7 @@ dependencies {
     implementation('org.springframework.boot:spring-boot-starter-data-jpa')
     implementation("org.mariadb.jdbc:mariadb-java-client")
     implementation('com.h2database:h2')
+
 
     testImplementation('org.springframework.boot:spring-boot-starter-test')
 }
