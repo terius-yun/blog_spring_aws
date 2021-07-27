@@ -5,6 +5,7 @@ import com.terry.blog.domain.posts.PostsRepository;
 import com.terry.blog.domain.posts.PostsRepositoryTest;
 import com.terry.blog.web.dto.PostsSaveRequestDto;
 import com.terry.blog.web.dto.PostsUpdateRequestDto;
+import javafx.geometry.Pos;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
@@ -97,5 +98,28 @@ public class PostsApiControllerTest {
         List<Posts> all = postsRepository.findAll();
         assertThat(all.get(0).getTitle()).isEqualTo(expectedTitle);
         assertThat(all.get(0).getContent()).isEqualTo(expectedContent);
+    }
+
+    @Test
+    public void Posts_삭제된다() throws Exception{
+        Posts savedPost = postsRepository.save(Posts.builder()
+                .title("title")
+                .author("author")
+                .content("content")
+                .build());
+
+        Long deleteId = savedPost.getId();
+
+        String url = "http://localhost:"+ port + "/api/v1/posts/"+deleteId;
+
+        //when
+        ResponseEntity<Long> responseEntity = restTemplate.exchange(url, HttpMethod.DELETE, null, Long.class);
+
+        //then
+        assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(responseEntity.getBody()).isGreaterThan(0L);
+
+        List<Posts> all = postsRepository.findAll();
+        assertThat(all == null);
     }
 }
