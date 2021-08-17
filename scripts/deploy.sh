@@ -9,7 +9,7 @@ cp $REPOSITORY/zip/*.jar $REPOSITORY/snapshot
 
 echo ">현재 구동중인 어플리케이션 pid 확인"
 
-CURRENT_PID=$(pgrep -fl blog_spring_aws | grep jar | awk '{print $1}')
+CURRENT_PID=$(pgrep -fl blog_spring_aws | grep "java")
 
 echo "현재 구동 중인 플리케이션 pid : $CURRENT_PID"
 
