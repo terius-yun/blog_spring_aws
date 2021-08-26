@@ -19,13 +19,11 @@ public class ImageUploadController {
 
     private S3Service s3Service = new S3Service();
 
-    @PostMapping(value = "/api/v1/image/upload")
+    @PostMapping(value = "/api/v2/image/upload")
     public String ImageUpload(MultipartFile upload) throws Exception {
         System.out.println("upload = "+ upload);
         String imgPath = s3Service.upload(upload);
 
         return "{\"uploaded\": true, \"url\":\""+imgPath+"\"}";
-        //            ImageUploader uploader = new ImageUploader();
-//        return uploader.ImageUploader(request,response,multiFile,upload);
     }
 }
