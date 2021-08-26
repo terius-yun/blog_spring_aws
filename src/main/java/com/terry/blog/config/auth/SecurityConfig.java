@@ -17,7 +17,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers("/", "/css/**","/images/**","/js/**","/h2-console/**", "/profile").permitAll()
-                .antMatchers("/api/v1/**").hasRole(Role.USER.name())
+                .antMatchers("/api/v1/**").hasRole(Role.USER.name())//반드시 커밋전 USER로 바꿀것
                 .anyRequest().authenticated()
                 .and()
                 .logout().logoutSuccessUrl("/")

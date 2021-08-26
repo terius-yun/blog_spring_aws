@@ -12,12 +12,16 @@ var main ={
         $('#btn-delete').on('click', function(){
             _this.delete();
         });
+
+        $('#btn-search').on('click', function(){
+            _this.search();
+        });
     },
     save: function(){
         var data ={
             title : $('#title').val(),
             author : $('#author').val(),
-            content : $('#content').val()
+            content : editor.getData()
         };
 
         $.ajax({
@@ -66,7 +70,15 @@ var main ={
              }).fail(function(error){
                  alert(JSON.stringify(error));
              });
-         }
+    },search : function(){
+        var keyword = $("#searchKeyword").val();
+
+        if(keyword == ""){
+            alert('검색어를 입력해주세요.');
+        }else{
+            window.location.href = '/posts/search?serachKeyword='+keyword;
+        }
+    }
 };
 
 main.init();

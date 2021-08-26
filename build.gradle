@@ -38,4 +38,12 @@ dependencies {
 
     testImplementation('org.springframework.boot:spring-boot-starter-test')
     testImplementation("org.springframework.security:spring-security-test") // 권한 관련
+
+    // IOUtils add
+    implementation("commons-io:commons-io:2.4")
+
+    // https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-aws
+    // S3설정
+    implementation platform('com.amazonaws:aws-java-sdk-bom:1.11.1000')
+    implementation 'com.amazonaws:aws-java-sdk-s3'
 }

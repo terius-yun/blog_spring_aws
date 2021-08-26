@@ -47,4 +47,9 @@ public class PostsService {
     public List<PostsListResponseDto> findAllDesc(){
         return postsRepository.findAllDesc().stream().map(PostsListResponseDto::new).collect(Collectors.toList());
     }
+
+    @Transactional(readOnly = true)
+    public List<PostsListResponseDto> searchPosts(String searchKeyword){
+        return postsRepository.searchPosts(searchKeyword).stream().map(PostsListResponseDto::new).collect(Collectors.toList());
+    }
 }
