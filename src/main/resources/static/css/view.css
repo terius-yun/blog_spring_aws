@@ -1,0 +1,16 @@
+
+#view-wrapper{
+    width: 50%;
+    margin:0 auto;
+    background-color: #fbfcff;
+    position: relative;
+}
+#viewTitle{
+    font-size: 25px;
+    font-weight: bold;
+}
+#postView_author{
+    position: absolute;
+        top: 5%;
+        left: 80%;
+}

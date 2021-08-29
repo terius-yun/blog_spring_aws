@@ -1,9 +1,10 @@
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>-->
 <!--index.js 추가-->
 <script src="/js/app/index.js"></script>
 <!--<script src="https://cdn.ckeditor.com/ckeditor5/29.1.0/classic/ckeditor.js"></script>-->
 <script src="https://cdn.ckeditor.com/ckeditor5/29.1.0/decoupled-document/ckeditor.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
 <script>
     DecoupledEditor
         .create( document.querySelector( '#content' ),{
@@ -18,9 +19,6 @@
 
             toolbarContainer.appendChild( editor.ui.view.toolbar.element );
         } );
-<!--        .catch( error => {-->
-<!--            console.error( error );-->
-<!--        } );-->
 </script>
 
 </body>

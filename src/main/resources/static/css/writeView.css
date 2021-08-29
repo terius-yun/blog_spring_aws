@@ -1,0 +1,33 @@
+#save-wrapper{
+width: 50%;
+    margin:0 auto;
+    background-color: #fbfcff;
+    position: relative;
+    text-align: left;
+}
+
+#save-wrapper input,select{
+    width:100%;
+    font-size:20px;
+    border-radius: 5px;
+    border-style:solid;
+    border-color: #b7b3d4b3;
+}
+#save-wrapper select{
+    width: 150px;
+}
+
+form div {
+    margin-top : 10px;
+}
+
+#save-wrapper .action_btn{
+    text-align: center;
+}
+.action_btn button{
+    padding: 0;
+    border-radius: 5px;
+    font-size:18px;
+    border: 2px solid  #000;
+    width: 70px;
+}

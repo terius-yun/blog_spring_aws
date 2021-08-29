@@ -1,0 +1,42 @@
+{{>layout/header}}
+<div class="col-md-12">
+    <br>
+    <!-- 목록-->
+    <table class="hotview-wrapper">
+        <div style="position: relative;">
+            <h3>{{kategories}}</h3>
+            <div class="mainView_save"><a href="/posts/save" role="button" >게시글 작성</a></div>
+        </div>
+        {{#hasRole}}
+            {{#posts}}
+            <tr>
+                <td class="hotView_count">{{viewCtn}} 👀</td>
+                <td>
+                    <a class="hotviewTitle" href="/posts/update/{{id}}">{{title}}</a>
+                </td>
+                <td class="hotviewKategorie" style="width:20%;">{{kategorie}}</td>
+            </tr>
+            {{/posts}}
+        {{/hasRole}}
+        {{^hasRole}}
+            {{#posts}}
+            <tr>
+                <td class="hotView_count">{{viewCtn}} 👀</td>
+                <td>
+                    <a class="hotView_title" href="/viewPost/{{id}}">{{title}}</a>
+                </td>
+                <td class="hotView_kategorie" style="">{{kategorie}}</td>
+            </tr>
+            {{/posts}}
+        {{/hasRole}}
+    </table>
+    <div  id="pages">
+        {{#pages}}
+            <span><a href="/view/{{kategorie}}?page={{.}}">{{.}}</a></span>
+        {{/pages}}
+    </div>
+    <input type="text" id="searchKeyword" placeholder="본문 내용">
+    <button type="button" id="btn-search" class="btn btn-secondary active">검색</button>
+</div>
+</div>
+{{>layout/footer}}

@@ -1,44 +1,40 @@
 {{>layout/header}}
-    <h1>스프링 부트로 시작하는 웹서비스 Ver.2</h1>
-    <div class="col-md-12">
-        <div class="row">
-            <div class="col-md-6">
-                <a href="/posts/save" role="button" class="btn btn-primary">글 등록</a>
-            <!-- 로그인-->
-                {{#userName}}
-                    Logged in as: <span id="user">{{userName}}</span>
-                    <a href="/logout" class="btn btn-info active" role="button">Logout</a>
-                {{/userName}}
-                {{^userName}}
-                    <a href="/oauth2/authorization/google" class="btn btn-success active" role="button">Google Login</a>
-                    <a href="/oauth2/authorization/naver" class="btn btn-secondary active" role="button">Naver Login</a>
-                {{/userName}}
-            </div>
-        </div>
+    <div id="img-wrapper">
+        <img id="mainImg" src="/images/mainImg.jpg">
+    </div>
+    <div>
         <br>
         <!-- 목록-->
-        <table class="table table-horizontal table-bordered">
-            <thead class="thead-strong">
-                <tr>
-                    <th>게시글 번호</th>
-                    <th>제목</th>
-                    <th>작성자</th>
-                    <th>최종 수정일</th>
-                </tr>
-            </thead>
-            <tbody id="tbody">
+        <div id="mainView-wrapper">
+            <h3>HOT 인기 게시물</h3>
+            <div class="mainView_save"><a href="/posts/save" role="button" >게시글 작성</a></div>
+        </div>
+        <table class="hotview-wrapper">
+            {{#hasRole}}
             {{#posts}}
                 <tr>
-                    <td>{{id}}</td>
-                    <td><a href="/posts/update/{{id}}">{{title}}</a></td>
-                    <td>{{author}}</td>
-                    <td>{{modifiedDate}}</td>
+                    <td class="hotView_count">{{viewCtn}}  👀</td>
+                    <td>
+                        <a class="hotView_title" href="/posts/update/{{id}}">{{title}}</a>
+                    </td>
+                    <td class="hotView_kategorie" style="width:20%;">{{kategorie}}</td>
                 </tr>
             {{/posts}}
-            </tbody>
+            {{/hasRole}}
+            {{^hasRole}}
+            {{#posts}}
+                <tr>
+                    <td class="hotView_count">{{viewCtn}} 👀</td>
+                    <td>
+                        <a class="hotView_title" href="/viewPost/{{id}}">{{title}}</a>
+                    </td>
+                    <td class="hotView_kategorie" style="">{{kategorie}}</td>
+                </tr>
+            {{/posts}}
+            {{/hasRole}}
         </table>
-
         <input type="text" id="searchKeyword" placeholder="본문 내용">
-        <button type="button" id="btn-search">검색</button>
+        <button type="button" id="btn-search" class="btn btn-secondary active">검색</button>
     </div>
+</div>
 {{>layout/footer}}

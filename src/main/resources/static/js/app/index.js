@@ -18,10 +18,12 @@ var main ={
         });
     },
     save: function(){
+        if(vali()){
         var data ={
             title : $('#title').val(),
             author : $('#author').val(),
-            content : editor.getData()
+            content : editor.getData(),
+            kategorie : $('#kategorie option:selected').val()
         };
 
         $.ajax({
@@ -34,8 +36,10 @@ var main ={
             alert('글이 등록되었습니다.');
             window.location.href= '/';
         }).fail(function(error){
-            alert(JSON.stringify(error));
+//            alert(JSON.stringify(error));
+              alert("권한이 없습니다. \n관리자에게 문의하세요 :(\ntingtangting9398@gmail.com");
         })
+        }
     },update : function(){
         var data = {
             title : $('#title').val(),
@@ -76,9 +80,28 @@ var main ={
         if(keyword == ""){
             alert('검색어를 입력해주세요.');
         }else{
-            window.location.href = '/posts/search?serachKeyword='+keyword;
+            window.location.href = '/view/search?serachKeyword='+keyword;
         }
     }
 };
 
 main.init();
+
+function vali(){
+    if($('#title').val() == ""){
+        alert('제목을 입력해주세요.');
+        return false;
+    }
+    if($('#author').val() == ""){
+        alert('작성자를 입력해주세요.');
+        return false;
+    }if(editor.getData() == ""){
+        alert('내용을 입력해주세요.');
+        return false;
+    }
+    if($('#kategorie option:selected').val() == ""){
+        alert('카테고리를 설정해주세요.');
+        return false;
+    }
+    return true;
+}

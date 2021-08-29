@@ -16,7 +16,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable().headers().frameOptions().disable()
                 .and()
                 .authorizeRequests()
-                .antMatchers("/", "/css/**","/images/**","/js/**","/h2-console/**", "/profile").permitAll()
+                .antMatchers("/", "/css/**","/images/**","/js/**","/h2-console/**", "/profile","/view/**","/viewPost/**").permitAll()
                 .antMatchers("/api/v1/**").hasRole(Role.USER.name())//반드시 커밋전 USER로 바꿀것
                 .anyRequest().authenticated()
                 .and()
