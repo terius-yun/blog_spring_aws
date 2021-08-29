@@ -43,7 +43,9 @@ var main ={
     },update : function(){
         var data = {
             title : $('#title').val(),
-            content : $('#content').val()
+            content : $('#content').val(),
+            content : editor.getData(),
+            kategorie : $('#kategorie option:selected').val()
         };
 
         var id = $('#id').val();

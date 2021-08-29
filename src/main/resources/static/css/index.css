@@ -6,6 +6,10 @@ a:visited, a:link{text-decoration: none; color: black;}
   margin:0 auto;
   text-align: center;
 }
+#logout-btn{
+    background-color: white;
+}
+
 #blogTitle{
     padding: 20px 0;
     display: inline-block;
@@ -14,6 +18,11 @@ a:visited, a:link{text-decoration: none; color: black;}
     display:inline;
 }
 #login{
+    position: absolute;
+    top: 10px;
+    left: 90%;
+}
+#logout{
     position: absolute;
     top: 10px;
     left: 75%;
@@ -44,8 +53,12 @@ nav span {
 .hotview-wrapper{
     width: 50%;
     margin:0 auto;
-    font-size: 25px;
+    font-size: 20px;
     border: 1px solid black;
+}
+
+.hotview-wrapper tr{
+    height: 50px;
 }
 .hotView_count{
     width: 20%
