@@ -6,11 +6,26 @@
     position: relative;
 }
 #viewTitle{
+    display: inline-block;
     font-size: 25px;
     font-weight: bold;
 }
 #postView_author{
-    position: absolute;
-        top: 5%;
-        left: 80%;
+    margin-left: 50px;
+    display: inline-block;
+    /*position: absolute;*/
+    /*    top: 5%;*/
+    /*    left: 80%;*/
+}
+
+#update-view-btn{
+    float: right;
+    background-color: #fbfcff;
+}
+
+#view-content{
+    text-align: start;
+}
+.image_resized{
+    width: 100%;
 }

@@ -90,10 +90,18 @@ public class IndexController {
     }
     //게시글 보기
     @GetMapping("/viewPost/{id}")
-    public String viewPosts(@PathVariable Long id, Model model){
+    public String viewPosts(@PathVariable Long id, Model model, @LoginUser SessionUser user){
         postsService.viewcount(id);
         PostsResponseDto dto = postsService.findById(id);
         model.addAttribute("post", dto);
+        if(user != null){//권한확인 후 권한이없다면 뷰로 있다면 수정으로
+            if(user.getRole().toString().equals("USER")){
+                model.addAttribute("email", user.getEmail().toString());
+                model.addAttribute("hasRole", "true");
+            }
+            model.addAttribute("userName", user.getName());
+        }
+
         return "posts-view";
     }
     //검색로직
